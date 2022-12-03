@@ -1,23 +1,48 @@
-import React, { useState } from 'react'; // eslint-disable-line no-unused-vars
+import React, { useState } from 'react';
 import { Button, Form } from 'semantic-ui-react'
+import axios from 'axios';
 
 
 export default function Create() {
-    const [firstName, setFirstName] = useState(''); // eslint-disable-line no-unused-vars
-    const [lastName, setLastName] = useState(''); // eslint-disable-line no-unused-vars
+    const [description, setDescription] = useState('');
+    const [category, setCategory] = useState('');
+    const [price, setPrice] = useState('');
+    const [dueDate, setDueDate] = useState('');
+    const postData = () => {
+        axios.post('https://umoneytest.free.beeceptor.com/my/api/path', {
+            description,
+            category,
+            price,
+            dueDate
+    })
+
+
+}
+
+
+
     return (
         <div>
             <Form className="create-form">
                 <Form.Field>
-                    <label></label>
-                    <input class="form-control" placeholder='First Name' />
+                    <input className="form-control" placeholder='Description'
+                    onChange={(e) => setDescription(e.target.value)} />
                 </Form.Field>
                 <Form.Field>
-                    <label ></label>
-                    <input class="form-control" placeholder='Last Name' />
+                    <input className="mt-3 form-control" placeholder='Category'
+                    onChange={(e) => setCategory(e.target.value)}/>
                 </Form.Field>
-                <Button class="mt-4 btn btn-primary" type='submit'>Submit</Button>
+                <Form.Field>
+                    <input className="mt-3 form-control" placeholder='Price'
+                    onChange={(e) => setPrice(e.target.value)}/>
+                </Form.Field>
+                <Form.Field>
+                    <input className="mt-3 form-control" placeholder='Due date'
+                    onChange={(e) => setDueDate(e.target.value)}/>
+                </Form.Field>
+                <Button type='submit' onClick={postData}className="mt-3 btn btn-primary"> Submit</Button>
             </Form>
         </div>
     )
 }
+
