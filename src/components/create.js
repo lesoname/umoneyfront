@@ -1,22 +1,48 @@
-import React, { useState } from 'react'; // eslint-disable-line no-unused-vars
-import { Button, Checkbox, Form } from 'semantic-ui-react'
+import React, { useState } from 'react';
+import { Button, Form } from 'semantic-ui-react'
+import axios from 'axios';
 
 
-const Create = () => (
-    <Form>
-        <Form.Field>
-            <label>First Name</label>
-            <input placeholder='First Name' />
-        </Form.Field>
-        <Form.Field>
-            <label>Last Name</label>
-            <input placeholder='Last Name' />
-        </Form.Field>
-        <Form.Field>
-            <Checkbox label='I agree to the Terms and Conditions' />
-        </Form.Field>
-        <Button type='submit'>Submit</Button>
-    </Form>
-)
+export default function Create() {
+    const [description, setDescription] = useState('');
+    const [category, setCategory] = useState('');
+    const [price, setPrice] = useState('');
+    const [dueDate, setDueDate] = useState('');
+    const postData = () => {
+        axios.post('https://umoneytest.free.beeceptor.com/my/api/path', {
+            description,
+            category,
+            price,
+            dueDate
+    })
 
-export default Create;
+
+}
+
+
+
+    return (
+        <div>
+            <Form className="create-form">
+                <Form.Field>
+                    <input className="form-control" placeholder='Description'
+                    onChange={(e) => setDescription(e.target.value)} />
+                </Form.Field>
+                <Form.Field>
+                    <input className="mt-3 form-control" placeholder='Category'
+                    onChange={(e) => setCategory(e.target.value)}/>
+                </Form.Field>
+                <Form.Field>
+                    <input className="mt-3 form-control" placeholder='Price'
+                    onChange={(e) => setPrice(e.target.value)}/>
+                </Form.Field>
+                <Form.Field>
+                    <input className="mt-3 form-control" placeholder='Due date'
+                    onChange={(e) => setDueDate(e.target.value)}/>
+                </Form.Field>
+                <Button type='submit' onClick={postData}className="mt-3 btn btn-primary"> Submit</Button>
+            </Form>
+        </div>
+    )
+}
+
