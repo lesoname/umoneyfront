@@ -8,6 +8,7 @@ export default function Create() {
     const [category, setCategory] = useState('');
     const [price, setPrice] = useState('');
     const [dueDate, setDueDate] = useState('');
+    
     const postData = () => {
         axios.post('https://umoneytest.free.beeceptor.com/my/api/path', {
             description,
@@ -15,10 +16,7 @@ export default function Create() {
             price,
             dueDate
     })
-
-
 }
-
 
 
     return (
