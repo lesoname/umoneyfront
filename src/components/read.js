@@ -1,40 +1,47 @@
-import React from 'react';
-import { Table } from 'semantic-ui-react'
+import React, { useEffect, useState } from 'react';
+import { Table, Button } from 'semantic-ui-react';
+import axios from 'axios';
+
+
 export default function Read() {
+    const [APIData, setAPIData] = useState([]);
+    useEffect(() => {
+        axios.get('https://638ea6b24ddca317d7e3089a.mockapi.io/api/v1/debts/')
+            .then((response) => {
+                setAPIData(response.data);
+            })
+    }, [])
+
+    
     return (
         <div>
             <div>
-                <h2 className="fs-3">All debts</h2>
+                <h2 className="fs-3">Debt Checker</h2>
             </div>
             <Table singleLine className="text-light">
                 <Table.Header>
                     <Table.Row>
-                        <Table.HeaderCell>Name</Table.HeaderCell>
-                        <Table.HeaderCell>Registration Date</Table.HeaderCell>
-                        <Table.HeaderCell>E-mail address</Table.HeaderCell>
-                        <Table.HeaderCell>Premium Plan</Table.HeaderCell>
+                        <Table.HeaderCell>Id</Table.HeaderCell>
+                        <Table.HeaderCell>Description</Table.HeaderCell>
+                        <Table.HeaderCell>Category</Table.HeaderCell>
+                        <Table.HeaderCell>Price</Table.HeaderCell>
+                        <Table.HeaderCell>Due Date</Table.HeaderCell>
+                        <Table.HeaderCell>Paid</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
 
                 <Table.Body>
-                    <Table.Row>
-                        <Table.Cell>John Lilki</Table.Cell>
-                        <Table.Cell>September 14, 2013</Table.Cell>
-                        <Table.Cell>jhlilk22@yahoo.com</Table.Cell>
-                        <Table.Cell>No</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>Jamie Harington</Table.Cell>
-                        <Table.Cell>January 11, 2014</Table.Cell>
-                        <Table.Cell>jamieharingonton@yahoo.com</Table.Cell>
-                        <Table.Cell>Yes</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>Jill Lewis</Table.Cell>
-                        <Table.Cell>May 11, 2014</Table.Cell>
-                        <Table.Cell>jilsewris22@yahoo.com</Table.Cell>
-                        <Table.Cell>Yes</Table.Cell>
-                    </Table.Row>
+                    {APIData.map((data) => {
+                        return (
+                            <Table.Row>
+                                <Table.Cell>{data.id}</Table.Cell>
+                                <Table.Cell>{data.description}</Table.Cell>
+                                <Table.Cell>{data.category}</Table.Cell>
+                                <Table.Cell>{data.price}</Table.Cell>
+                                <Table.Cell>{data.dueDate}</Table.Cell>
+                                <Table.Cell>{data.paid}</Table.Cell>
+                            </Table.Row>
+                    )})}
                 </Table.Body>
             </Table>
         </div>

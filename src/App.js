@@ -12,13 +12,11 @@ function App() {
     <Router>
       <div className="App">
         <div className="position-absolute top-50 start-50 translate-middle">
-          <div>
-            <Routes>
-              <Route exact path='/create' element={<Create/>}/>
-              <Route exact path='/read' element={<Read/>}/>
-              <Route exact path='/update' element={<Update/>}/>
-            </Routes>
-          </div>
+          <Routes>
+            <Route exact path='/create' element={<Create/>}/>
+            <Route exact path='/read' element={<Read/>}/>
+            <Route exact path='/update' element={<Update/>}/>
+          </Routes>
         </div>
       </div>
     </Router>
