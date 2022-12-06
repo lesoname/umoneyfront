@@ -21,6 +21,9 @@ export default function Create() {
 
     return (
         <div>
+            <div>
+                <h2 className="fs-2 mb-3"> Create a debt</h2>
+            </div>
             <Form className="create-form">
                 <Form.Field>
                     <input className="form-control" placeholder='Description'
