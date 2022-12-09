@@ -11,7 +11,7 @@ export default function Read() {
                 setAPIData(response.data);
             })
     }, [])
-
+ /* Solve bug of boolean dont show*/ 
     
     return (
         <div>
@@ -39,7 +39,7 @@ export default function Read() {
                                 <Table.Cell>{data.category}</Table.Cell>
                                 <Table.Cell>{data.price}</Table.Cell>
                                 <Table.Cell>{data.dueDate}</Table.Cell>
-                                <Table.Cell>{data.paid}</Table.Cell>
+                                <Table.Cell>{data.paid.toString()}</Table.Cell>
                             </Table.Row>
                     )})}
                 </Table.Body>
