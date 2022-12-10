@@ -12,7 +12,17 @@ export default function Read() {
                 setAPIData(response.data);
             })
     }, [])
- /* Solve bug of boolean dont show*/ 
+
+    const setData = (data) => {
+        let { id, description, category, price, dueDate, paid} = data;
+        localStorage.setItem('Id', id);
+        localStorage.setItem('Description', description);
+        localStorage.setItem('Category', category);
+        localStorage.setItem('Price', price);
+        localStorage.setItem('Due Date', dueDate);
+        localStorage.setItem('Paid', paid);
+    }
+
     
     return (
         <div>
@@ -45,7 +55,7 @@ export default function Read() {
                                 <Table.Cell>{data.paid.toString()}</Table.Cell>
                                     <Table.Cell>
                                         <Link to='/update'>
-                                            <Button className="mt-3 btn btn-primary">Update</Button>
+                                            <Button onClick={() => setData(data)} className="mt-3 btn btn-primary">Update</Button>
                                         </Link> 
                                     </Table.Cell>
                                 <Table.Cell>
