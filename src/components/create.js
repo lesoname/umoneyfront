@@ -15,8 +15,7 @@ export default function Create() {
             category,
             price,
             dueDate
-    })
-}
+    })}
 
 
     return (
