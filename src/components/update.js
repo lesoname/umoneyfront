@@ -19,13 +19,14 @@ export default function Update() {
     }, []);
 
     
-    const postData = () => {
-        axios.post('https://umoneytest.free.beeceptor.com/my/api/path', {
+    const updateAPIData = () => {
+        axios.put('https://638ea6b24ddca317d7e3089a.mockapi.io/api/v1/{id}', {
             description,
             category,
             price,
             dueDate
-    })}
+        })
+    }
 
 
 
@@ -64,7 +65,7 @@ export default function Update() {
                     value={dueDate}/>
                 </Form.Field>
 
-                <Button type='submit' onClick={postData}className="mt-3 btn btn-primary"> Submit</Button>
+                <Button type='submit' onClick={updateAPIData}className="mt-3 btn btn-primary"> Submit</Button>
             
             </Form>
         </div>

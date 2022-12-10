@@ -10,7 +10,7 @@ export default function Create() {
     const [dueDate, setDueDate] = useState('');
     
     const postData = () => {
-        axios.post('https://umoneytest.free.beeceptor.com/my/api/path', {
+        axios.post('https://638ea6b24ddca317d7e3089a.mockapi.io/api/v1/debts/', {
             description,
             category,
             price,

@@ -7,7 +7,7 @@ import axios from 'axios';
 export default function Read() {
     const [APIData, setAPIData] = useState([]);
     useEffect(() => {
-        axios.get('https://638ea6b24ddca317d7e3089a.mockapi.io/api/v1/debts/')
+        axios.get('http://192.168.100.4:3000/api/v1/debts/')
             .then((response) => {
                 setAPIData(response.data);
             })
