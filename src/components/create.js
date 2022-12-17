@@ -3,12 +3,11 @@ import { Button, Form } from 'semantic-ui-react'
 import axios from 'axios';
 import DatePicker from 'react-date-picker';
 
-
 export default function Create() {
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState('');
     const [price, setPrice] = useState('');
-    const [due_date, setDueDate] = useState('');
+    const [due_date, setDueDate] = useState(new Date());
     const [user_id, setUserId] = useState('');
     
     const postData = () => {
@@ -18,9 +17,12 @@ export default function Create() {
             price,
             due_date,
             user_id
-
     })}
 
+
+    const handleChangeDate = (selectedDate) => {
+        setDueDate(selectedDate);
+    };
 
     return (
         <div>
@@ -43,8 +45,11 @@ export default function Create() {
                     onChange={(e) => setPrice(e.target.value)}/>
                 </Form.Field>
                 <Form.Field>
-                    <DatePicker className="mt-3 form-control"
-                    onChange={(e) => setDueDate(e.target.value)}/>
+                    <DatePicker
+                        className="mt-3 form-control"
+                        value={due_date}
+                        onChange={handleChangeDate}
+                    />
                 </Form.Field>
                 <Form.Field>
                     <input className="mt-3 form-control" placeholder='User Id'
