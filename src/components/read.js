@@ -7,19 +7,19 @@ import axios from 'axios';
 export default function Read() {
     const [APIData, setAPIData] = useState([]);
     useEffect(() => {
-        axios.get('https://638ea6b24ddca317d7e3089a.mockapi.io/api/v1/debts/')
+        axios.get('http://127.0.0.1:3000/api/v1/debts')
             .then((response) => {
                 setAPIData(response.data);
             })
     }, [])
 
     const setData = (data) => {
-        let { id, description, category, price, dueDate, paid} = data;
+        let { id, description, category, price, due_date, paid} = data;
         localStorage.setItem('Id', id);
         localStorage.setItem('Description', description);
         localStorage.setItem('Category', category);
         localStorage.setItem('Price', price);
-        localStorage.setItem('Due Date', dueDate);
+        localStorage.setItem('Due Date', due_date);
         localStorage.setItem('Paid', paid);
     }
 
@@ -38,6 +38,7 @@ export default function Read() {
                         <Table.HeaderCell>Price</Table.HeaderCell>
                         <Table.HeaderCell>Due Date</Table.HeaderCell>
                         <Table.HeaderCell>Paid</Table.HeaderCell>
+                        <Table.HeaderCell>User</Table.HeaderCell>
                         <Table.HeaderCell></Table.HeaderCell>
                         <Table.HeaderCell></Table.HeaderCell>
                     </Table.Row>
@@ -51,13 +52,14 @@ export default function Read() {
                                 <Table.Cell>{data.description}</Table.Cell>
                                 <Table.Cell>{data.category}</Table.Cell>
                                 <Table.Cell>{data.price}</Table.Cell>
-                                <Table.Cell>{data.dueDate}</Table.Cell>
-                                <Table.Cell>{data.paid.toString()}</Table.Cell>
-                                    <Table.Cell>
-                                        <Link to='/update'>
-                                            <Button onClick={() => setData(data)} className="mt-3 btn btn-primary">Update</Button>
-                                        </Link> 
-                                    </Table.Cell>
+                                <Table.Cell>{data.due_date?.toString()}</Table.Cell>
+                                <Table.Cell>{data.paid?.toString()}</Table.Cell>
+                                <Table.Cell>{data.user.name}</Table.Cell>
+                                <Table.Cell>
+                                    <Link to='/update'>
+                                        <Button onClick={() => setData(data)} className="mt-3 btn btn-primary">Update</Button>
+                                    </Link> 
+                                </Table.Cell>
                                 <Table.Cell>
                                     <Button className="mt-3 btn btn-danger">Destroy</Button>
                                 </Table.Cell>
