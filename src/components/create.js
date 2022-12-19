@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { Button, Form } from 'semantic-ui-react'
 import axios from 'axios';
 import DatePicker from 'react-date-picker';
+import { useNavigate } from 'react-router';
+
+
 
 export default function Create() {
     const [description, setDescription] = useState('');
@@ -10,6 +13,8 @@ export default function Create() {
     const [due_date, setDueDate] = useState(new Date());
     const [user_id, setUserId] = useState('');
     
+    let navigate = useNavigate();
+
     const postData = () => {
         axios.post('http://127.0.0.1:3000/api/v1/debts/', {
             description,
@@ -17,7 +22,10 @@ export default function Create() {
             price,
             due_date,
             user_id
-    })}
+        }).then(() => {
+            navigate('/read')
+        })
+    }
 
 
     const handleChangeDate = (selectedDate) => {
