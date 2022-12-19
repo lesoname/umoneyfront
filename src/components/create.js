@@ -32,32 +32,44 @@ export default function Create() {
             </div>
 
             <Form className="create-form">
+                
                 <Form.Field>
-                    <input className="form-control" placeholder='Description'
+                    <input className="form-control"
+                    placeholder='Description'
                     onChange={(e) => setDescription(e.target.value)} />
                 </Form.Field>
+
                 <Form.Field>
-                    <input className="mt-3 form-control" placeholder='Category'
+                    <input className="mt-3 form-control"
+                    placeholder='Category'
                     onChange={(e) => setCategory(e.target.value)}/>
                 </Form.Field>
+
                 <Form.Field>
-                    <input className="mt-3 form-control" placeholder='Price'
+                    <input className="mt-3 form-control"
+                    placeholder='Price'
                     onChange={(e) => setPrice(e.target.value)}/>
                 </Form.Field>
+
                 <Form.Field>
                     <DatePicker
                         className="mt-3 form-control"
                         value={due_date}
-                        onChange={handleChangeDate}
-                    />
+                        onChange={handleChangeDate}/>
                 </Form.Field>
+
                 <Form.Field>
-                    <input className="mt-3 form-control" placeholder='User Id'
+                    <input className="mt-3 form-control"
+                    placeholder='User Id'
                     onChange={(e) => setUserId(e.target.value)}/>
                 </Form.Field>
-                <Button type='submit' onClick={postData}className="mt-3 btn btn-primary">
+
+                <Button type='submit'
+                onClick={postData}
+                className="mt-3 btn btn-primary">
                     Submit
                 </Button>
+
             </Form>
 
         </div>
