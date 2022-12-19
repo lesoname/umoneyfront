@@ -23,7 +23,11 @@ export default function Read() {
         localStorage.setItem('Paid', paid);
     }
 
-    
+    const onDelete = (id) => {
+
+    }
+
+
     return (
         <div>
             <div>
