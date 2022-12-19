@@ -50,8 +50,6 @@ export default function Read() {
                         <Table.HeaderCell>Paid</Table.HeaderCell>
                         
                         <Table.HeaderCell>User</Table.HeaderCell>
-
-                        <Table.HeaderCell>User Id</Table.HeaderCell>
                         
                         <Table.HeaderCell></Table.HeaderCell>
                         
@@ -78,8 +76,6 @@ export default function Read() {
                                 <Table.Cell>{data.paid?.toString()}</Table.Cell>
                                 
                                 <Table.Cell>{data.user.name}</Table.Cell>
-
-                                <Table.Cell>{data.user.id}</Table.Cell>
                                 
                                 <Table.Cell>
                                     <Link to='/update'>
