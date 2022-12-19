@@ -86,7 +86,8 @@ export default function Read() {
                                 </Table.Cell>
 
                                 <Table.Cell>
-                                    <Button className="mt-3 btn btn-danger">
+                                    <Button className="mt-3 btn btn-danger"
+                                            onClick={() => onDelete(data.id)}>
                                         Destroy
                                     </Button>
                                 </Table.Cell>
