@@ -11,6 +11,8 @@ export default function Update() {
     const [due_date, setDueDate] = useState(new Date());
     const [paid, setPaid] = useState('');
     
+    let navigate = useNavigate();
+
     const putData = () => {
         axios.put('http://127.0.0.1:3000/api/v1/debts/'+id, {
             description,
@@ -18,7 +20,10 @@ export default function Update() {
             price,
             due_date,
             paid
-    })}
+        }).then(() => {
+            navigate('/read')
+        })
+    }
 
     useEffect(() => {
         setID(localStorage.getItem('Id'))
