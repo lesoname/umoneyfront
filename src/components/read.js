@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Table, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import moment from 'moment';
 
+var currencyFormatter = require('currency-formatter');
 
 export default function Read() {
     const [APIData, setAPIData] = useState([]);
@@ -73,19 +75,33 @@ export default function Read() {
                         return (
                             <Table.Row key={data.id}>
                                 
-                                <Table.Cell>{data.id}</Table.Cell>
+                                <Table.Cell>
+                                    {data.id}
+                                </Table.Cell>
                                 
-                                <Table.Cell>{data.description}</Table.Cell>
+                                <Table.Cell>
+                                    {data.description}
+                                </Table.Cell>
                                 
-                                <Table.Cell>{data.category}</Table.Cell>
+                                <Table.Cell>
+                                    {data.category}
+                                </Table.Cell>
                                 
-                                <Table.Cell>{data.price}</Table.Cell>
+                                <Table.Cell>
+                                    {currencyFormatter.format(data.price, {code: 'USD'})}
+                                </Table.Cell>
                                 
-                                <Table.Cell>{data.due_date?.toString()}</Table.Cell>
+                                <Table.Cell>
+                                    {moment(data.due_date).utcOffset("-240").format("MM/DD/YYYY")}
+                                </Table.Cell>
                                 
-                                <Table.Cell>{data.paid?.toString()}</Table.Cell>
+                                <Table.Cell >
+                                    {data.paid}
+                                </Table.Cell>
                                 
-                                <Table.Cell>{data.user.name}</Table.Cell>
+                                <Table.Cell>
+                                    {data.user.name}
+                                </Table.Cell>
                                 
                                 <Table.Cell>
                                     <Link to='/update'>
