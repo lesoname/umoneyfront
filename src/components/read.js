@@ -3,10 +3,8 @@ import { Table, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment';
-moment().format(); 
 
-
-
+var currencyFormatter = require('currency-formatter');
 
 export default function Read() {
     const [APIData, setAPIData] = useState([]);
@@ -90,7 +88,7 @@ export default function Read() {
                                 </Table.Cell>
                                 
                                 <Table.Cell>
-                                    {data.price}
+                                    {currencyFormatter.format(data.price, {code: 'USD'})}
                                 </Table.Cell>
                                 
                                 <Table.Cell>
