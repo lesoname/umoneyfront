@@ -96,7 +96,7 @@ export default function Read() {
                                 </Table.Cell>
                                 
                                 <Table.Cell >
-                                    {data.paid}
+                                    {data.paid.toString()}
                                 </Table.Cell>
                                 
                                 <Table.Cell>
