@@ -23,7 +23,7 @@ export default function Update() {
             due_date,
             paid
         }).then(() => {
-            navigate('/read')
+            navigate('/')
         })
     }
 
