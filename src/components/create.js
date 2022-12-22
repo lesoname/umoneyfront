@@ -23,7 +23,7 @@ export default function Create() {
             due_date,
             user_id
         }).then(() => {
-            navigate('/read')
+            navigate('/')
         })
     }
 

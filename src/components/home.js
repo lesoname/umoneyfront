@@ -6,7 +6,7 @@ import moment from 'moment';
 
 var currencyFormatter = require('currency-formatter');
 
-export default function Read() {
+export default function Home() {
     const [APIData, setAPIData] = useState([]);
     useEffect(() => {
         axios.get('http://127.0.0.1:3000/api/v1/debts')
@@ -43,9 +43,9 @@ export default function Read() {
     return (
         <div>
             <div>
-                <h2 className="fs-3">Debt Checker</h2>
+                <h2 className="fs-3 text-dark">Debt Checker</h2>
             </div>
-            <Table singleLine className="text-light">
+            <Table singleLine className="text-dark">
                 <Table.Header>
                     
                     <Table.Row>
@@ -96,7 +96,7 @@ export default function Read() {
                                 </Table.Cell>
                                 
                                 <Table.Cell >
-                                    {data.paid}
+                                    {String(data.paid)}
                                 </Table.Cell>
                                 
                                 <Table.Cell>
