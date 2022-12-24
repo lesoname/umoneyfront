@@ -4,6 +4,8 @@ import axios from 'axios';
 import DatePicker from 'react-date-picker';
 import { useNavigate } from 'react-router';
 import moment from 'moment';
+import MaskedInput from 'react-text-mask'
+
 
 
 
@@ -40,6 +42,12 @@ export default function Update() {
     }, []);
 
 
+    var storedDate = localStorage.getItem('Due Date');
+    var date = new Date(storedDate);
+    var year = date.getFullYear();
+    var month = ('0' + (date.getMonth() + 1)).slice(-2);
+    var day = ('0' + date.getDate()).slice(-2);
+    var formattedDate = month + '/' + day + '/' + year;
 
 
     return (
@@ -52,43 +60,50 @@ export default function Update() {
             <Form className="create-form">
                 
                 <Form.Field>
-                    <input className="form-control"
-                    placeholder='Description'
-                    onChange={(e) => setDescription(e.target.value)}
-                    value={description}/>
+                    <input
+                        className="form-control"
+                        placeholder='Description'
+                        onChange={(e) => setDescription(e.target.value)}
+                        value={description}/>
                 </Form.Field>
 
                 <Form.Field>
-                    <input className="mt-3 form-control"
-                    placeholder='Category'
-                    onChange={(e) => setCategory(e.target.value)}
-                    value={category}/>
+                    <input
+                        className="mt-3 form-control"
+                        placeholder='Category'
+                        onChange={(e) => setCategory(e.target.value)}
+                        value={category}/>
                 </Form.Field>
 
                 <Form.Field>
-                    <input className="mt-3 form-control"
-                    placeholder='Price'
-                    onChange={(e) => setPrice(e.target.value)}
-                    value={price}/>
+                    <input
+                        className="mt-3 form-control"
+                        placeholder='Price'
+                        onChange={(e) => setPrice(e.target.value)}
+                        value={price}/>
                 </Form.Field>
 
                 <Form.Field>
-                    <input className="mt-3 form-control"
-                    placeholder='Due Date'
-                    onChange={(e) => setPrice(e.target.value)}
-                    value={moment(due_date).format('MM/DD/YYYY')}/>
+                    <MaskedInput
+                        mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
+                        className="mt-3 form-control"
+                        placeholder='Due Date'
+                        onChange={(e) => setDueDate(e.target.value)}
+                        defaultValue={formattedDate}/>
                 </Form.Field>
 
                 <Form.Field>
-                    <input className="mt-3 form-control"
-                    placeholder='Paid'
-                    onChange={(e) => setPaid(e.target.value)}
-                    value={paid}/>
+                    <input 
+                        className="mt-3 form-control"
+                        placeholder='Paid'
+                        onChange={(e) => setPaid(e.target.value)}
+                        value={paid}/>
                 </Form.Field>
 
-                <Button type='submit'
-                onClick={putData}
-                className="mt-3 btn btn-primary">
+                <Button
+                    type='submit'
+                    onClick={putData}
+                    className="mt-3 btn btn-primary">
                     Submit
                 </Button>
 

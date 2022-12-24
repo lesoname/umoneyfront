@@ -3,6 +3,7 @@ import { Button, Form } from 'semantic-ui-react'
 import axios from 'axios';
 import DatePicker from 'react-date-picker';
 import { useNavigate } from 'react-router';
+import MaskedInput from 'react-text-mask'
 
 
 
@@ -38,39 +39,45 @@ export default function Create() {
             <Form className="create-form">
                 
                 <Form.Field>
-                    <input className="form-control"
-                    placeholder='Description'
-                    onChange={(e) => setDescription(e.target.value)} />
-                </Form.Field>
-
-                <Form.Field>
-                    <input className="mt-3 form-control"
-                    placeholder='Category'
-                    onChange={(e) => setCategory(e.target.value)}/>
-                </Form.Field>
-
-                <Form.Field>
-                    <input className="mt-3 form-control"
-                    placeholder='Price'
-                    onChange={(e) => setPrice(e.target.value)}/>
+                    <input
+                        className="form-control"
+                        placeholder='Description'
+                        onChange={(e) => setDescription(e.target.value)} />
                 </Form.Field>
 
                 <Form.Field>
                     <input
                         className="mt-3 form-control"
-                        onChange={(e) => setDueDate(e.target.value)}
-                        placeholder='Date'/>
+                        placeholder='Category'
+                        onChange={(e) => setCategory(e.target.value)}/>
                 </Form.Field>
 
                 <Form.Field>
-                    <input className="mt-3 form-control"
-                    placeholder='User Id'
-                    onChange={(e) => setUserId(e.target.value)}/>
+                    <input
+                        className="mt-3 form-control"
+                        placeholder='Price'
+                        onChange={(e) => setPrice(e.target.value)}/>
                 </Form.Field>
 
-                <Button type='submit'
-                onClick={postData}
-                className="mt-3 btn btn-primary">
+                <Form.Field>
+                    <MaskedInput
+                        mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
+                        className="mt-3 form-control"
+                        onChange={(e) => setDueDate(e.target.value)}
+                        placeholder='Due Date'/>
+                </Form.Field>
+
+                <Form.Field>
+                    <input
+                        className="mt-3 form-control"
+                        placeholder='User Id'
+                        onChange={(e) => setUserId(e.target.value)}/>
+                </Form.Field>
+
+                <Button
+                    type='submit'
+                    onClick={postData}
+                    className="mt-3 btn btn-primary">
                     Submit
                 </Button>
 
