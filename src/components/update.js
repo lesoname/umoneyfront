@@ -3,6 +3,8 @@ import {Button, Form} from 'semantic-ui-react'
 import axios from 'axios';
 import DatePicker from 'react-date-picker';
 import { useNavigate } from 'react-router';
+import moment from 'moment';
+
 
 
 export default function Update() {
@@ -10,7 +12,7 @@ export default function Update() {
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState('');
     const [price, setPrice] = useState('');
-    const [due_date, setDueDate] = useState(new Date());
+    const [due_date, setDueDate] = useState('');
     const [paid, setPaid] = useState('');
     
     let navigate = useNavigate();
@@ -38,15 +40,13 @@ export default function Update() {
     }, []);
 
 
-    const handleChangeDate = (selectedDate) => {
-        setDueDate(selectedDate);
-    };
+
 
     return (
         <div>
 
             <div>
-                <h2 className="fs-2 mb-3"> Create a debt</h2>
+                <h2 className="fs-2 mb-3"> Update a debt</h2>
             </div>
 
             <Form className="create-form">
@@ -73,10 +73,10 @@ export default function Update() {
                 </Form.Field>
 
                 <Form.Field>
-                    <DatePicker
-                        className="mt-3 form-control"
-                        onChange={handleChangeDate}
-                        value={due_date}/>
+                    <input className="mt-3 form-control"
+                    placeholder='Due Date'
+                    onChange={(e) => setPrice(e.target.value)}
+                    value={moment(due_date).format('MM/DD/YYYY')}/>
                 </Form.Field>
 
                 <Form.Field>

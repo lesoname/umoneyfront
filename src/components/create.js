@@ -10,7 +10,7 @@ export default function Create() {
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState('');
     const [price, setPrice] = useState('');
-    const [due_date, setDueDate] = useState(new Date());
+    const [due_date, setDueDate] = useState('');
     const [user_id, setUserId] = useState('');
     
     let navigate = useNavigate();
@@ -27,10 +27,6 @@ export default function Create() {
         })
     }
 
-
-    const handleChangeDate = (selectedDate) => {
-        setDueDate(selectedDate);
-    };
 
     return (
         <div>
@@ -60,10 +56,10 @@ export default function Create() {
                 </Form.Field>
 
                 <Form.Field>
-                    <DatePicker
+                    <input
                         className="mt-3 form-control"
-                        value={due_date}
-                        onChange={handleChangeDate}/>
+                        onChange={(e) => setDueDate(e.target.value)}
+                        placeholder='Date'/>
                 </Form.Field>
 
                 <Form.Field>
