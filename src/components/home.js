@@ -39,6 +39,7 @@ export default function Home() {
              })
     }
 
+    
 
     return (
         <div>
@@ -73,6 +74,7 @@ export default function Home() {
                 <Table.Body>
                     {APIData.map((data) => {
                         return (
+
                             <Table.Row key={data.id}>
                                 
                                 <Table.Cell>
@@ -92,7 +94,7 @@ export default function Home() {
                                 </Table.Cell>
                                 
                                 <Table.Cell>
-                                    {moment(data.due_date).utcOffset("-240").format("MM/DD/YYYY")}
+                                    {moment.utc(data.due_date).format("MM/DD/YYYY")}
                                 </Table.Cell>
                                 
                                 <Table.Cell >
